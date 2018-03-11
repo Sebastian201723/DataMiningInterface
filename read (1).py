@@ -147,12 +147,11 @@ pC = float(contC)/totalValores
 pX = float(contX)/totalValores
 pY = float(contY)/totalValores
 #PROBABILIDADES A PRIORI
+
 df_apriori = pd.DataFrame([pA,pB,pC,pX,pY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
 
-datosapriori = np.asarray(df_apriori)
-np.savetxt("apriori.csv",
-            datosapriori,
-            delimiter=",")
+df_apriori.to_csv('apriori.csv')
+
 
 osfa=osma=obha=obna=obla=ocha=ocna=ocla=0
 osfb=osmb=obhb=obnb=oblb=ochb=ocnb=oclb=0
@@ -334,10 +333,8 @@ vectorcondicionalY=[probsfdy, probsmdy, probbhdy, probbndy, probbldy, probchdy, 
 #EXPORTAR
 df_condicional = pd.DataFrame([vectorcondicionalA, vectorcondicionalB, vectorcondicionalC, vectorcondicionalX, vectorcondicionalY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
 
-datosCondicional = np.asarray(df_condicional)
-np.savetxt("condicional.csv",
-            datosCondicional,
-            delimiter=",")
+df_condicional.to_csv('condicional.csv')
+
 #MEDIA
 mediaEdadA = contEdadA/contA
 mediaNaKA = contNaKA/contA
@@ -387,7 +384,4 @@ continuasY =[mediaEdadY, desvEstEdadY, mediaNaKY, desvEstNaKY]
 
 df_continuas = pd.DataFrame([continuasA, continuasB, continuasC, continuasX, continuasY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
 
-datosCont = np.asarray(df_continuas)
-np.savetxt("continuas.csv",
-            datosCont,
-            delimiter=",")
+df_continuas.to_csv('continuas.csv')
