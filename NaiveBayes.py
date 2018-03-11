@@ -182,15 +182,23 @@ ProbTotal3 = ProbTotal(probAprioriC,probSC,probBPC,probCHC,ProbDistNormalDCEdad,
 ProbTotal4 = ProbTotal(probAprioriX,probSX,probBPX,probCHX,ProbDistNormalDXEdad,ProbDistNormalDXNak)
 ProbTotal5 = ProbTotal(probAprioriY,probSY,probBPY,probCHY,ProbDistNormalDYEdad,ProbDistNormalDYNak)
 
-if ProbTotal1>ProbTotal2 and ProbTotal1>ProbTotal2 and ProbTotal1>ProbTotal3 and ProbTotal1>ProbTotal4 and ProbTotal1>ProbTotal5:
-    ClassResul = ProbTotal1
-if ProbTotal2>ProbTotal3 and ProbTotal2>ProbTotal4 and ProbTotal2>ProbTotal5:
-    ClassResul = ProbTotal2
-if ProbTotal3>ProbTotal4 and ProbTotal3>ProbTotal5:
-    ClassResul = ProbTotal3
-if ProbTotal4>ProbTotal5:
-    ClassResul = ProbTotal4
-if ProbTotal5>ProbTotal4:
-    classResul = ProbTotal5
+#Normalización
+SumTotal = ProbTotal1 + ProbTotal2 +ProbTotal3 +ProbTotal4 +ProbTotal5 
+TOTALProbTotal1N = ProbTotal1 *100/ SumTotal
+TOTALProbTotal2N = ProbTotal2 *100/ SumTotal
+TOTALProbTotal3N = ProbTotal3 *100/ SumTotal
+TOTALProbTotal4N = ProbTotal4 *100/ SumTotal
+TOTALProbTotal5N = ProbTotal5 *100/ SumTotal
+
+if TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal3N and TOTALProbTotal1N>TOTALProbTotal4N and TOTALProbTotal1N>TOTALProbTotal5N:
+    ClassResul = TOTALProbTotal1N
+if TOTALProbTotal2N>TOTALProbTotal3N and TOTALProbTotal2N>TOTALProbTotal4N and TOTALProbTotal2N>TOTALProbTotal5N:
+    ClassResul = TOTALProbTotal2N
+if TOTALProbTotal3N>TOTALProbTotal4N and TOTALProbTotal3N>TOTALProbTotal5N:
+    ClassResul = TOTALProbTotal3N
+if TOTALProbTotal4N>TOTALProbTotal5N:
+    ClassResul = TOTALProbTotal4N
+if TOTALProbTotal5N>TOTALProbTotal4N:
+    classResul = TOTALProbTotal5N
     
 print("ClassResult: ", classResul)
