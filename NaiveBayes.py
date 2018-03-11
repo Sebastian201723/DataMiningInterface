@@ -163,7 +163,34 @@ ProbDistNormalDXNak = distNormal(VNaK, MediaNaKDX, VarNakDX )
 ProbDistNormalDYEdad = distNormal(VEdad, MediaEdadDY, VarEdadDY )
 ProbDistNormalDYNak = distNormal(VNaK, MediaNaKDY, VarNakDY )
 
-print("Prueba de funciones: ")
-res = ProbTotal(0.34, 0.67,0.34,0.6,0.3,0.43)
-res1 = distNormal(10,10.997,1.98)
-print("distNormal",res1)
+#Valores a priori
+p1 = dfApriori.iloc[0].tolist()
+p2 = dfApriori.iloc[1].tolist()
+p3 = dfApriori.iloc[2].tolist()
+p4 = dfApriori.iloc[3].tolist()
+p5 = dfApriori.iloc[4].tolist()
+
+probAprioriA = p1[1]
+probAprioriB = p2[1]
+probAprioriC = p3[1]
+probAprioriX = p4[1]
+probAprioriY = p5[1]
+
+ProbTotal1 = ProbTotal(probAprioriA,probSA,probBPA,probCHA,ProbDistNormalDAEdad,ProbDistNormalDANak)
+ProbTotal2 = ProbTotal(probAprioriB,probSB,probBPB,probCHB,ProbDistNormalDBEdad,ProbDistNormalDBNak)
+ProbTotal3 = ProbTotal(probAprioriC,probSC,probBPC,probCHC,ProbDistNormalDCEdad,ProbDistNormalDCNak)
+ProbTotal4 = ProbTotal(probAprioriX,probSX,probBPX,probCHX,ProbDistNormalDXEdad,ProbDistNormalDXNak)
+ProbTotal5 = ProbTotal(probAprioriY,probSY,probBPY,probCHY,ProbDistNormalDYEdad,ProbDistNormalDYNak)
+
+if ProbTotal1>ProbTotal2 and ProbTotal1>ProbTotal2 and ProbTotal1>ProbTotal3 and ProbTotal1>ProbTotal4 and ProbTotal1>ProbTotal5:
+    ClassResul = ProbTotal1
+if ProbTotal2>ProbTotal3 and ProbTotal2>ProbTotal4 and ProbTotal2>ProbTotal5:
+    ClassResul = ProbTotal2
+if ProbTotal3>ProbTotal4 and ProbTotal3>ProbTotal5:
+    ClassResul = ProbTotal3
+if ProbTotal4>ProbTotal5:
+    ClassResul = ProbTotal4
+if ProbTotal5>ProbTotal4:
+    classResul = ProbTotal5
+    
+print("ClassResult: ", classResul)
