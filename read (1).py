@@ -2,6 +2,11 @@ from scipy.io import arff
 import pandas as pd
 import math
 
+def probabilidad(x,mean,stdev):
+    exponent = math.exp(-(math.pow(x-mean,2)/(2*math.pow(stdev,2))))
+    return (1/(math.sqrt(2*math.pi)*stdev)) * exponent
+
+
 def condDiscreta(se, bl, ch, index):
     contsef=contsem=contblh=contbln=contbll=contchh=contchn=contchl=0
     if se[index]=="F":
@@ -24,10 +29,12 @@ def condDiscreta(se, bl, ch, index):
     vcd=[contsef,contsem, contblh, contbln, contbll, contchh, contchn, contchl]
     return vcd
 
-
-def desviacionEstandar(media, totalValores, acumulado):
-        
-    desviacion = math.sqrt((((1/(totalValores))*acumulado)-(media ** 2))*(-1))
+def desviacionEstandar(media, totalValor, acumulado):
+    
+    a = float((acumulado/(totalValor)))
+    c = media*media
+    b = abs(a-c)
+    desviacion = math.sqrt(b)
     return desviacion
 
 #leer el dataset
@@ -133,6 +140,7 @@ for i in range(0,totalValores):
         contY += 1
 
 
+#CALCULO TABLA 1: Probabilidad  de cada clase
 pA = float(contA)/totalValores
 pB = float(contB)/totalValores
 pC = float(contC)/totalValores
@@ -145,31 +153,25 @@ osfc=osmc=obhc=obnc=oblc=ochc=ocnc=oclc=0
 osfx=osmx=obhx=obnx=oblx=ochx=ocnx=oclx=0
 osfy=osmy=obhy=obny=obly=ochy=ocny=ocly=0
 
-
 contEdadA=0
 contNaKA=0
 contDesvEdadA=0
 contDesvNaKA=0
-
-
 
 contEdadB=0
 contNaKB=0
 contDesvEdadB=0
 contDesvNaKB=0
 
-
 contEdadC=0
 contNaKC=0
 contDesvEdadC=0
 contDesvNaKC=0
 
-
 contEdadX=0
 contNaKX=0
 contDesvEdadX=0
 contDesvNaKX=0
-
 
 contEdadY=0
 contNaKY=0
@@ -182,19 +184,19 @@ for i in range(0, totalValores):
         contEdadA = contEdadA + listaEdades[i]
         contNaKA = contNaKA + listaNaK[i]
 
-        contDesvEdadA = contDesvEdadA + (listaEdades[i] ** 2)
-        contDesvNaA = contDesvNaKA + (listaNaK[i] ** 2)
+        contDesvEdadA = contDesvEdadA + (listaEdades[i]** 2)
+        contDesvNaA = contDesvNaKA + (listaNaK[i]** 2)
 
-        
+        #Contador de los valores de todos los atributos
         ppa = condDiscreta(listaSexos, listaBP, listaCh, i)
-        osfa=osfa+ppa[0]
+        osfa=osfa+ppa[0] #Contador Sexo femenino droga A
         osma=osma+ppa[1]
         obha=obha+ppa[2]
         obna=obna+ppa[3]
         obla=obla+ppa[4]
         ocha=ocha+ppa[5]
         ocna=ocna+ppa[6]
-        ocla=ocla+ppa[7]
+        ocla=ocla+ppa[7]#Contador Cholesterol bajo droga A
         
     elif listaDrogas[i]=="drugB":
         
@@ -322,6 +324,8 @@ vectorcondicionalC=[probsfdc, probsmdc, probbhdc, probbndc, probbldc, probchdc, 
 vectorcondicionalX=[probsfdx, probsmdx, probbhdx, probbndx, probbldx, probchdx, probcndx, probcldx]
 vectorcondicionalY=[probsfdy, probsmdy, probbhdy, probbndy, probbldy, probchdy, probcndy, probcldy]    
 
+#Matriz:
+A = [vectorcondicionalA,vectorcondicionalB,vectorcondicionalC,vectorcondicionalX,vectorcondicionalY ]
 #MEDIA
 mediaEdadA = contEdadA/contA
 mediaNaKA = contNaKA/contA
@@ -361,4 +365,6 @@ desvEstNaKX = desviacionEstandar(mediaNaKX, contX, contDesvNaKX)
 
 desvEstEdadY = desviacionEstandar(mediaEdadY, contY, contDesvEdadY)
 desvEstNaKY = desviacionEstandar(mediaNaKY, contY, contDesvNaKY)
-    
+
+
+
