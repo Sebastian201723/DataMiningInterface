@@ -1,7 +1,7 @@
 from scipy.io import arff
 import pandas as pd
 import math
-
+import numpy as np
 def probabilidad(x,mean,stdev):
     exponent = math.exp(-(math.pow(x-mean,2)/(2*math.pow(stdev,2))))
     return (1/(math.sqrt(2*math.pi)*stdev)) * exponent
@@ -146,6 +146,13 @@ pB = float(contB)/totalValores
 pC = float(contC)/totalValores
 pX = float(contX)/totalValores
 pY = float(contY)/totalValores
+#PROBABILIDADES A PRIORI
+df_apriori = pd.DataFrame([pA,pB,pC,pX,pY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
+
+datosapriori = np.asarray(df_apriori)
+np.savetxt("apriori.csv",
+            datosapriori,
+            delimiter=",")
 
 osfa=osma=obha=obna=obla=ocha=ocna=ocla=0
 osfb=osmb=obhb=obnb=oblb=ochb=ocnb=oclb=0
@@ -185,7 +192,7 @@ for i in range(0, totalValores):
         contNaKA = contNaKA + listaNaK[i]
 
         contDesvEdadA = contDesvEdadA + (listaEdades[i]** 2)
-        contDesvNaA = contDesvNaKA + (listaNaK[i]** 2)
+        contDesvNaKA = contDesvNaKA + (listaNaK[i]** 2)
 
         #Contador de los valores de todos los atributos
         ppa = condDiscreta(listaSexos, listaBP, listaCh, i)
@@ -324,8 +331,13 @@ vectorcondicionalC=[probsfdc, probsmdc, probbhdc, probbndc, probbldc, probchdc, 
 vectorcondicionalX=[probsfdx, probsmdx, probbhdx, probbndx, probbldx, probchdx, probcndx, probcldx]
 vectorcondicionalY=[probsfdy, probsmdy, probbhdy, probbndy, probbldy, probchdy, probcndy, probcldy]    
 
-#Matriz:
-A = [vectorcondicionalA,vectorcondicionalB,vectorcondicionalC,vectorcondicionalX,vectorcondicionalY ]
+#EXPORTAR
+df_condicional = pd.DataFrame([vectorcondicionalA, vectorcondicionalB, vectorcondicionalC, vectorcondicionalX, vectorcondicionalY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
+
+datosCondicional = np.asarray(df_condicional)
+np.savetxt("condicional.csv",
+            datosCondicional,
+            delimiter=",")
 #MEDIA
 mediaEdadA = contEdadA/contA
 mediaNaKA = contNaKA/contA
@@ -367,4 +379,15 @@ desvEstEdadY = desviacionEstandar(mediaEdadY, contY, contDesvEdadY)
 desvEstNaKY = desviacionEstandar(mediaNaKY, contY, contDesvNaKY)
 
 
+continuasA =[mediaEdadA, desvEstEdadA, mediaNaKA, desvEstNaKA]
+continuasB =[mediaEdadB, desvEstEdadB, mediaNaKB, desvEstNaKB]
+continuasC =[mediaEdadC, desvEstEdadC, mediaNaKC, desvEstNaKC]
+continuasX =[mediaEdadX, desvEstEdadX, mediaNaKX, desvEstNaKX]
+continuasY =[mediaEdadY, desvEstEdadY, mediaNaKY, desvEstNaKY]
 
+df_continuas = pd.DataFrame([continuasA, continuasB, continuasC, continuasX, continuasY], index = ['drugA', 'drugB', 'drugC', 'drugX', 'drugY'])
+
+datosCont = np.asarray(df_continuas)
+np.savetxt("continuas.csv",
+            datosCont,
+            delimiter=",")
