@@ -36,13 +36,12 @@ df = pd.DataFrame(data[0])
 
 #seleccionar la columna de clases y convertirla en una lista
 listaDrogas = df['Drug'].tolist()
-
-totalValores = len(listaDrogas)
-
 listaNa = df['Na'].tolist()
 listaK = df['K'].tolist()
 
-#Agregar una nueva columna para NaK
+totalValores = len(listaDrogas)
+
+#Agregar una nueva columna para Na/K
 NaK=[]
 for i in range(0, totalValores):
     NaK.append(float(listaNa[i])/float(listaK[i]))
