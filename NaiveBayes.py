@@ -170,19 +170,21 @@ p3 = dfApriori.iloc[2].tolist()
 p4 = dfApriori.iloc[3].tolist()
 p5 = dfApriori.iloc[4].tolist()
 
+#Recuperamos ProbApriori, quitamos columnas de drogas
 probAprioriA = p1[1]
 probAprioriB = p2[1]
 probAprioriC = p3[1]
 probAprioriX = p4[1]
 probAprioriY = p5[1]
 
+#Calculamos la probabilidad total:
 ProbTotal1 = ProbTotal(probAprioriA,probSA,probBPA,probCHA,ProbDistNormalDAEdad,ProbDistNormalDANak)
 ProbTotal2 = ProbTotal(probAprioriB,probSB,probBPB,probCHB,ProbDistNormalDBEdad,ProbDistNormalDBNak)
 ProbTotal3 = ProbTotal(probAprioriC,probSC,probBPC,probCHC,ProbDistNormalDCEdad,ProbDistNormalDCNak)
 ProbTotal4 = ProbTotal(probAprioriX,probSX,probBPX,probCHX,ProbDistNormalDXEdad,ProbDistNormalDXNak)
 ProbTotal5 = ProbTotal(probAprioriY,probSY,probBPY,probCHY,ProbDistNormalDYEdad,ProbDistNormalDYNak)
 
-#Normalización
+#Normalizacion de la prob total
 SumTotal = ProbTotal1 + ProbTotal2 +ProbTotal3 +ProbTotal4 +ProbTotal5 
 TOTALProbTotal1N = ProbTotal1 *100/ SumTotal
 TOTALProbTotal2N = ProbTotal2 *100/ SumTotal
@@ -190,6 +192,7 @@ TOTALProbTotal3N = ProbTotal3 *100/ SumTotal
 TOTALProbTotal4N = ProbTotal4 *100/ SumTotal
 TOTALProbTotal5N = ProbTotal5 *100/ SumTotal
 
+#Determinamos la prob mas alta
 if TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal3N and TOTALProbTotal1N>TOTALProbTotal4N and TOTALProbTotal1N>TOTALProbTotal5N:
     ClassResul = TOTALProbTotal1N
 if TOTALProbTotal2N>TOTALProbTotal3N and TOTALProbTotal2N>TOTALProbTotal4N and TOTALProbTotal2N>TOTALProbTotal5N:

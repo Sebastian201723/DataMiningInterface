@@ -1,31 +1,26 @@
-<html>
-  <head>
-       <LINK REL=StyleSheet HREF="design.css" TYPE="text/css" MEDIA=screen>
-  </head>
 
-<div class="container">  
-  <form id="contact" action="" method="post">
+<div class="container"> 
+  <link rel=StyleSheet href="design.css" type="text/css" >
+  <form  action="/recibir" method="post">
     <h3>Data mining work 1</h3>
     <h4>Recollecting data</h4>
     <fieldset>
-      <input placeholder="Your Age" type="text" tabindex="1" required autofocus>
+      <input placeholder="Your Age" type="text" tabindex="1" name="inputAge" id="inputAge" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Sex (F|M) " type="email" tabindex="2" required>
+      <input placeholder="Your Sex (F|M) " type="text" tabindex="2" name="inputSex" id="inputSex"  required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your BP {HIGH, NORMAL, LOW}:" type="tel" tabindex="3" required>
+      <input placeholder="Your BP {HIGH, NORMAL, LOW}:" type="text" tabindex="3" name="inputBp" id="inputBp" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Your Cholesterol {HIGH, NORMAL, LOW}:" type="url" tabindex="4" required>
+      <input placeholder="Your Cholesterol {HIGH, NORMAL, LOW}:" type="text" tabindex="4"  name="inputCh" id="inputCh" required>
     </fieldset>
     <fieldset>
-      <textarea placeholder="Type Na/k:" tabindex="5" required></textarea>
+      <input placeholder="Type Na/k:" type="text"  tabindex="5" name="inputNak" id="inputNak"  required>
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      <button name="submit" type="submit" id="submit" data-submit="...Sending">Submit</button>
     </fieldset>
   </form>
 </div>
-
-</html>
