@@ -202,3 +202,4 @@ if TOTALProbTotal5N>TOTALProbTotal4N:
     classResul = TOTALProbTotal5N
     
 print("ClassResult: ", classResul)
+print("Probabilidades: ", TOTALProbTotal1N )

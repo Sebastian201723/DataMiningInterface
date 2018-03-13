@@ -61,7 +61,7 @@ listaNaK = df_nak['Na/K'].tolist()
 
 listaEdades = df['Age'].tolist()
 
-#Calculo de precisión
+#Calculo de precision
 df1 = df.sort_values('Age')
 listaEd = df1['Age'].tolist()
 ContAge1 = 0
@@ -77,14 +77,14 @@ ContDistic=0
 for i in range(0, totalValores-1):
     if listaDelta[i] != 0:
         ContDistic = 1 + ContDistic
-#Precisión
+#Precision
 precision = sumalistDelta / ContDistic
-#Cálculo Edad con Precisión
+#Calculo Edad con Precision
 for j in range(0, totalValores-1):
     listaEdades[j] = math.ceil(listaEdades[j]/precision)  * precision
 
 
-#Calculo de precisión para NaK
+#Calculo de precision para NaK
 
 dfNaK1 = df_nak.sort_values('Na/K')
 listaNaK1 = dfNaK1['Na/K'].tolist()
@@ -102,9 +102,9 @@ ContDisticNaK=0
 for i in range(0, totalValores-1):
     if listaDeltaNaK[i] != 0:
         ContDisticNaK = 1 + ContDisticNaK
-#Precisión
+#Precision
 precisionNaK = sumalistDeltaNaK / ContDisticNaK
-#Cálculo Edad con Precisión
+#Calculo Edad con Precision
 for j in range(0, totalValores-1):
     listaNaK[j] = math.ceil(listaNaK[j]/precisionNaK)  * precisionNaK    
     
