@@ -1,5 +1,6 @@
 from flask import Flask, json
 from flask import render_template, request
+from NaiveBayes import totalidad
 import read
 import sys
 
@@ -35,8 +36,10 @@ def recepcion():
             restText.write(Nak)
             restText.write('\n')
             restText.close()       
-            import NaiveBayes 
-            
+            import NaiveBayes as x
+            print("1. Prob total desde readpython es: ", x.totalidad())
+            print("2. Edad: ",Age)
+            print("3. Nak: ",Nak)
     else:
             print("No se ha posteado nada")
     return render_template('index.html')

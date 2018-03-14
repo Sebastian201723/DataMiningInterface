@@ -2,12 +2,11 @@
 """
 Created on Sun Mar 11 18:53:31 2018
 
-@author: LONOVO
+@author: Sebastian Cajas
 """
 import pandas as pd
-import math 
-#import numpy as np
-
+import math  
+#importamos  las constentes que nos sirven para det prob 
 dfApriori = pd.read_csv('apriori.csv')
 dfCondicional = pd.read_csv('condicional.csv')
 dfContinuas = pd.read_csv('continuas.csv')
@@ -18,7 +17,7 @@ def distNormal(x,mean,stdev):
 
 def ProbTotal(ProbApriori, ProbCondS, ProbCondBP, ProbCondCh, ProbNormalEdad,ProbNormalNak):
         return 10**(math.log10(ProbApriori)+math.log10(ProbCondS)+math.log10(ProbCondBP)+math.log10(ProbCondCh)+math.log10(ProbNormalEdad)+math.log10(ProbNormalNak))
-def total():
+def totalidad():
             #List Recovery
             DrugACond = dfCondicional.iloc[0].tolist()
             DrugBCond = dfCondicional.iloc[1].tolist()
@@ -36,13 +35,13 @@ def total():
             #with open("AgeText.txt") as f:
             #   VEdad = map(float,f)   
             #VEdad = int(open("AgeText.txt","r"))
+            #Abrimos valores incresados por usuario desde pag web
             ValorRes = open("rest.txt","r")
             #contenido = ValorRes.read()
             cont = 0
             for linea in ValorRes:
                 if cont == 0:
                     VEdad = float(linea[:-1])
-                    print("Edad: ", VEdad)
                 if cont == 1:
                     VSexo = linea[:-1]
                 if cont  == 2:
@@ -51,7 +50,6 @@ def total():
                     VCh = linea[:-1]
                 if cont == 4:
                     VNaK = float(linea[:-1])
-                    print("VNak: ", VNaK)
                 cont = cont + 1
             Valores = [VEdad, VSexo, VBP, VCh, VNaK]
 
@@ -222,3 +220,5 @@ def total():
             print("Probabilidades: ", TOTALProbTotal1N )
 
             print("Probabilidades Total: ", ClassResul )
+
+            return ClassResul
