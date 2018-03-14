@@ -34,10 +34,19 @@ ContDrugC = dfContinuas.iloc[2].tolist()
 ContDrugX = dfContinuas.iloc[3].tolist()
 ContDrugY = dfContinuas.iloc[4].tolist()
 
+#with open("AgeText.txt") as f:
+ #   VEdad = map(float,f)   
+#VEdad = int(open("AgeText.txt","r"))
+VSexo = open("SexText.txt","r")
+VBP = open("BpText.txt","r")
+VCh = open("ChText.txt","r")
+#with open("NakText.txt") as f:
+ #   VNaK = map(float,f)
+#VNaK = float(open("NakText.txt","r"))
 VEdad = float(input("Ingrese edad: "))
-VSexo = raw_input("Ingrese sexo (F/M): ")
-VBP = raw_input("Ingrese BP {HIGH, NORMAL, LOW}: ")
-VCh = raw_input("Ingrese Cholesterol {HIGH, NORMAL, LOW}: ")
+#VSexo = raw_input("Ingrese sexo (F/M): ")
+#VBP = raw_input("Ingrese BP {HIGH, NORMAL, LOW}: ")
+#VCh = raw_input("Ingrese Cholesterol {HIGH, NORMAL, LOW}: ")
 VNaK = float(input("Ingrese Nak: "))
 
 Valores = [VEdad, VSexo, VBP, VCh, VNaK]
