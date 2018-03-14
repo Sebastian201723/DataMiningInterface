@@ -37,18 +37,23 @@ ContDrugY = dfContinuas.iloc[4].tolist()
 #with open("AgeText.txt") as f:
  #   VEdad = map(float,f)   
 #VEdad = int(open("AgeText.txt","r"))
-VSexo = open("SexText.txt","r")
-VBP = open("BpText.txt","r")
-VCh = open("ChText.txt","r")
-#with open("NakText.txt") as f:
- #   VNaK = map(float,f)
-#VNaK = float(open("NakText.txt","r"))
-VEdad = float(input("Ingrese edad: "))
-#VSexo = raw_input("Ingrese sexo (F/M): ")
-#VBP = raw_input("Ingrese BP {HIGH, NORMAL, LOW}: ")
-#VCh = raw_input("Ingrese Cholesterol {HIGH, NORMAL, LOW}: ")
-VNaK = float(input("Ingrese Nak: "))
-
+ValorRes = open("rest.txt","r")
+#contenido = ValorRes.read()
+cont = 0
+for linea in ValorRes:
+    if cont == 0:
+        VEdad = float(linea[:-1])
+        print("Edad: ", VEdad)
+    if cont == 1:
+        VSexo = linea[:-1]
+    if cont  == 2:
+        VBP = linea[:-1]
+    if cont == 3:
+        VCh = linea[:-1]
+    if cont == 4:
+        VNaK = float(linea[:-1])
+        print("VNak: ", VNaK)
+    cont = cont + 1
 Valores = [VEdad, VSexo, VBP, VCh, VNaK]
 
 #SEXO
@@ -202,6 +207,7 @@ TOTALProbTotal4N = ProbTotal4 *100/ SumTotal
 TOTALProbTotal5N = ProbTotal5 *100/ SumTotal
 
 #Determinamos la prob mas alta
+ClassResul = 0
 if TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal3N and TOTALProbTotal1N>TOTALProbTotal4N and TOTALProbTotal1N>TOTALProbTotal5N:
     ClassResul = TOTALProbTotal1N
 if TOTALProbTotal2N>TOTALProbTotal3N and TOTALProbTotal2N>TOTALProbTotal4N and TOTALProbTotal2N>TOTALProbTotal5N:
@@ -213,5 +219,4 @@ if TOTALProbTotal4N>TOTALProbTotal5N:
 if TOTALProbTotal5N>TOTALProbTotal4N:
     classResul = TOTALProbTotal5N
     
-print("ClassResult: ", classResul)
 print("Probabilidades: ", TOTALProbTotal1N )

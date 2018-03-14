@@ -16,7 +16,7 @@ NaiveBayes.TOTALProbTotal5N
 
 NaiveBayes.classResul
 
-print("Constante Prob total 1: ", NaiveBayes.TOTALProbTotal1N)
+print("Constante Prob total 1: ", NaiveBayes.TOTALProbTotal5N)
 print("Constante class resultante: ", NaiveBayes.classResul)
 
 app = Flask(__name__)
@@ -35,26 +35,26 @@ def design():
 @app.route('/recibir',methods=['POST','GET'])
 def recepcion():
     if request.method == 'POST':
+        
+            restText = open("rest.txt","w")
             Age = request.form['inputAge']
-            AgeText = open("AgeText.txt","w")
-            AgeText.write(Age) 
-            AgeText.close()
             Sex = request.form['inputSex']
-            SexText = open("SexText.txt","w")
-            SexText.write(Sex) 
-            SexText.close()
             Bp = request.form['inputBp']
-            BpText = open("BpText.txt","w")
-            BpText.write(Bp) 
-            BpText.close()
             Ch = request.form['inputCh']
-            ChText = open("ChText.txt","w")
-            ChText.write(Ch) 
-            ChText.close()
             Nak = request.form['inputNak']
-            NakText = open("NakText.txt","w")
-            NakText.write(Nak) 
-            NakText.close()
+            restText.write(Age) 
+            print("Edad: ", Age)
+            restText.write('\n')
+            restText.write(Sex)
+            restText.write('\n')
+            restText.write(Bp)
+            restText.write('\n')
+            restText.write(Ch)
+            restText.write('\n')
+            restText.write(Nak)
+            restText.write('\n')
+            restText.close()
+            
     else:
             print("No se ha posteado nada")
     return render_template('index.html')
