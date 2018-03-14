@@ -208,15 +208,18 @@ TOTALProbTotal5N = ProbTotal5 *100/ SumTotal
 
 #Determinamos la prob mas alta
 ClassResul = 0
+
 if TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal2N and TOTALProbTotal1N>TOTALProbTotal3N and TOTALProbTotal1N>TOTALProbTotal4N and TOTALProbTotal1N>TOTALProbTotal5N:
     ClassResul = TOTALProbTotal1N
-if TOTALProbTotal2N>TOTALProbTotal3N and TOTALProbTotal2N>TOTALProbTotal4N and TOTALProbTotal2N>TOTALProbTotal5N:
+if TOTALProbTotal2N>TOTALProbTotal3N and TOTALProbTotal2N>TOTALProbTotal4N and TOTALProbTotal2N>TOTALProbTotal5N and TOTALProbTotal2N>TOTALProbTotal1N :
     ClassResul = TOTALProbTotal2N
-if TOTALProbTotal3N>TOTALProbTotal4N and TOTALProbTotal3N>TOTALProbTotal5N:
+if TOTALProbTotal3N>TOTALProbTotal4N and TOTALProbTotal3N>TOTALProbTotal5N and TOTALProbTotal3N>TOTALProbTotal2N and TOTALProbTotal3N>TOTALProbTotal1N:
     ClassResul = TOTALProbTotal3N
-if TOTALProbTotal4N>TOTALProbTotal5N:
+if TOTALProbTotal4N>TOTALProbTotal5N and TOTALProbTotal4N>TOTALProbTotal3N and TOTALProbTotal4N>TOTALProbTotal2N and TOTALProbTotal4N>TOTALProbTotal1N:
     ClassResul = TOTALProbTotal4N
-if TOTALProbTotal5N>TOTALProbTotal4N:
-    classResul = TOTALProbTotal5N
+if TOTALProbTotal5N>TOTALProbTotal4N and TOTALProbTotal5N>TOTALProbTotal3N and TOTALProbTotal5N>TOTALProbTotal2N and TOTALProbTotal5N>TOTALProbTotal1N:
+    ClassResul = TOTALProbTotal5N
     
 print("Probabilidades: ", TOTALProbTotal1N )
+
+print("Probabilidades Total: ", ClassResul )
