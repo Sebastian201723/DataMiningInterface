@@ -1,26 +1,48 @@
 
-<div class="container"> 
-  <link rel=StyleSheet href="design.css" type="text/css" >
-  <form  action="/recibir" method="post">
-    <h3>Data mining work 1</h3>
-    <h4>Recollecting data</h4>
-    <fieldset>
-      <input placeholder="Your Age" type="text" tabindex="1" name="inputAge" id="inputAge" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Your Sex (F|M) " type="text" tabindex="2" name="inputSex" id="inputSex"  required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Your BP {HIGH, NORMAL, LOW}:" type="text" tabindex="3" name="inputBp" id="inputBp" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Your Cholesterol {HIGH, NORMAL, LOW}:" type="text" tabindex="4"  name="inputCh" id="inputCh" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Type Na/k:" type="text"  tabindex="5" name="inputNak" id="inputNak"  required>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="submit" data-submit="...Sending">Submit</button>
-    </fieldset>
-  </form>
-</div>
+  <div class="container"> 
+    <form  action="/recibir" method="post">
+      
+      <link rel=StyleSheet href="design.css" >
+      <h3>Data mining work 1</h3>
+      <h4>Recollecting data</h4>
+      <fieldset>
+        <input placeholder="Your Age" type="text" tabindex="1" name="inputAge" id="inputAge" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Sex (F|M) " type="text" tabindex="2" name="inputSex" id="inputSex"  required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your BP {HIGH, NORMAL, LOW}:" type="text" tabindex="3" name="inputBp" id="inputBp" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Cholesterol {HIGH, NORMAL, LOW}:" type="text" tabindex="4"  name="inputCh" id="inputCh" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Type Na/k:" type="text"  tabindex="5" name="inputNak" id="inputNak"  required>
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="submit" data-submit="...Sending" onclick="myFunction()" >Submit</button>
+      </fieldset>
+
+      <p><strong>RESULTADOS: A continuacion mostramos las probabilidades: </strong></p> 
+
+      <a>Probabilidad Droga A: </a>
+      <input type = "number" id="Prob1" value="10.22">
+      <script  >
+       function ReadFile()
+              {
+              var fso, f1, ts, s;
+              var ForReading = 1;
+              fso = new ActiveXObject("Scripting.FileSystemObject");
+              f = fso.OpenTextFile( "C:\Users\LONOVO\Desktop\MineriaDatos\prob1.txt", ForReading);
+              return(f.ReadAll());
+              }
+              document.write(ReadFile());
+      var resultado = ReadFile()
+        function myFunction(){
+            var txt;
+            var prob1 = prompt("Probabilidad Droga A: ",document.getElementById("Prob1").value = resultado );
+        }
+      </script>
+    </form>
+  </div>

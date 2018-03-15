@@ -202,7 +202,7 @@ def totalidad():
             TOTALProbTotal3N = ProbTotal3 *100/ SumTotal
             TOTALProbTotal4N = ProbTotal4 *100/ SumTotal
             TOTALProbTotal5N = ProbTotal5 *100/ SumTotal
-
+            
             #Determinamos la prob mas alta
             ClassResul = 0
 
@@ -220,5 +220,5 @@ def totalidad():
             print("Probabilidades: ", TOTALProbTotal1N )
 
             print("Probabilidades Total: ", ClassResul )
-
-            return ClassResul
+            respuesta = str(ClassResul)
+            return respuesta
