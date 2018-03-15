@@ -12,14 +12,16 @@ app = Flask(__name__)
 @app.route('/') 
 def index(): 
     return render_template('index.html')
+
 @app.route('/design.css', methods=['GET'])
+
 def design():
         return render_template('design.css')
 #Recibimos los valores 
 @app.route('/recibir',methods=['POST','GET'])
 def recepcion():
     if request.method == 'POST':
-        
+
             restText = open("rest.txt","w")
             Age = request.form['inputAge']
             Sex = request.form['inputSex']
@@ -42,11 +44,12 @@ def recepcion():
             texto = str(x.totalidad())
             probText.write(texto)
             probText.close()
+
             print("1. Prob total desde readpython es: ", x.totalidad())
             print("2. Edad: ",Age)
             print("3. Nak: ",Nak)
     else:
             print("No se ha posteado nada")
-    return render_template('index.html')
+    return render_template('menu.html')
 
 app.run(debug = True, port = 8000) 
