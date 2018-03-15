@@ -36,21 +36,15 @@ def recepcion():
             restText.write('\n')
             restText.write(Nak)
             restText.write('\n')
-            #restText.write(x.totalidad())
-            #otro= str(x.totalidad())
-            #type(x.totalidad())
             restText.close()
+
             probText = open("prob1.txt","w")
-            texto = str(totalidad())
+            texto = str(x.totalidad())
             probText.write(texto)
             probText.close()
             print("1. Prob total desde readpython es: ", x.totalidad())
             print("2. Edad: ",Age)
             print("3. Nak: ",Nak)
-            
-           # probText = open("prob1.txt","w")
-            #probText.write(x.totalidad())
-            #probText.close()
     else:
             print("No se ha posteado nada")
     return render_template('index.html')

@@ -1,5 +1,5 @@
-1
-M
-NORMAL
+34
+F
 LOW
-3
+LOW
+2
